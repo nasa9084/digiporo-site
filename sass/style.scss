@@ -1,0 +1,334 @@
+//-----------------------//
+// variable              //
+//-----------------------//
+
+//color name
+$digiporo: #6699ff;
+$black: #021f4d;
+$pink: #f26b7a;
+
+// color
+$color: $black;
+$bgcolor: gray;
+$basebg: white;
+$titlebg: white;
+
+// value
+$basewidth: 75%;
+$titleheight: 6em;
+$px: 10px;
+
+//-----------------------//
+// function              //
+//-----------------------//
+
+@function x($value) {
+    @return $px*$value
+}
+
+@function y($value) {
+    @return $px*$value
+}
+
+@function block($x, $y, $c) {
+    @return x($x) y($y) 0 .5px $c;
+}
+
+//-----------------------//
+// mixin                 //
+//-----------------------//
+
+//-----------------------//
+// css-image             //
+//-----------------------//
+.logo {
+    display: flex;
+    box-sizing: content-box;
+    border: 0;
+    margin: 1em;
+
+    @mixin initialize {
+        width: $px;
+        height: $px;
+    }
+
+    $charheight: $px*7;
+
+    .dchar {
+        width: $px*4;
+        height: $charheight;
+        .d {
+            @include initialize;
+            background: transparent;
+            box-shadow:
+            block(0, 2, black),
+            block(0, 3, black),
+            block(0, 4, black),
+            block(0, 5, $digiporo),
+            block(1, 2, black),
+            block(1, 4, black),
+            block(1, 5, $digiporo),
+            block(2, 0, black),
+            block(2, 1, black),
+            block(2, 2, black),
+            block(2, 3, black),
+            block(2, 4, black),
+            block(2, 5, $digiporo),
+            block(3, 5, $digiporo),
+        }
+    }
+
+    .ichar {
+        width: $px*2;
+        height: $charheight;
+        .i {
+            @include initialize;
+            background: black;
+            box-shadow:
+            block(0, 2, black),
+            block(0, 3, black),
+            block(0, 4, black),
+            block(0, 5, $digiporo),
+            block(1, 5, $digiporo),
+        }
+    }
+
+    .gchar {
+        width: $px*4;
+        height: $charheight;
+        .g {
+            @include initialize;
+            background: transparent;
+            box-shadow:
+            block(0, 2, black),
+            block(0, 3, black),
+            block(0, 4, black),
+            block(0, 5, $digiporo),
+            block(0, 6, black),
+            block(1, 2, black),
+            block(1, 4, black),
+            block(1, 5, $digiporo),
+            block(1, 6, black),
+            block(2, 2, black),
+            block(2, 3, black),
+            block(2, 4, black),
+            block(2, 5, black),
+            block(2, 6, black),
+            block(3, 5, $digiporo),
+        }
+    }
+
+    .pchar {
+        width: $px*4;
+        height: $charheight;
+        .p {
+            @include initialize;
+            background: white;
+            box-shadow:
+            block(0, 2, black),
+            block(0, 3, black),
+            block(0, 4, black),
+            block(0, 5, black),
+            block(0, 6, black),
+            block(1, 2, black),
+            block(1, 4, black),
+            block(1, 5, $digiporo),
+            block(2, 2, black),
+            block(2, 3, black),
+            block(2, 4, black),
+            block(2, 5, $digiporo),
+            block(3, 5, $digiporo),
+        }
+    }
+
+    .ochar {
+        width: $px*4;
+        height: $charheight;
+        .o {
+            @include initialize;
+            background: transparent;
+            box-shadow:
+            block(0, 2, black),
+            block(0, 3, black),
+            block(0, 4, black),
+            block(0, 5, $digiporo),
+            block(1, 2, black),
+            block(1, 4, black),
+            block(1, 5, $digiporo),
+            block(2, 2, black),
+            block(2, 3, black),
+            block(2, 4, black),
+            block(2, 5, $digiporo);
+        }
+    }
+    .rchar {
+        width: $px*3;
+        height: $charheight;
+        .r {
+            @include initialize;
+            background: transparent;
+            box-shadow:
+            block(-1, 5, $digiporo),
+            block(0, 2, black),
+            block(0, 3, black),
+            block(0, 4, black),
+            block(0, 5, $digiporo),
+            block(1, 2, black),
+            block(1, 5, $digiporo),
+            block(2, 5, $digiporo);
+        }
+    }
+}
+
+//-----------------------//
+// styles                //
+//-----------------------//
+* {
+    margin: 0;
+    padding: 0;
+    color: $color;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    background: $bgcolor;
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    border-bottom: $color 1px dotted;
+}
+
+.base {
+    width: $basewidth;
+    min-width: $px*30;
+    margin-bottom: 5em;
+    background: $basebg;
+    box-shadow: 0 0 15px 2px black;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.titlebar {
+    background: $titlebg;
+    width: $basewidth;
+    min-width: $px*30;
+    position: fixed;
+    box-sizing: content-box;
+    display: flex;
+    align-items: center;
+    height: $titleheight;
+    margin-bottom: 2em;
+    box-shadow: 0 0px 15px -5px black;
+}
+
+.body {
+    margin-top: $titleheight+2em;
+}
+
+.sectiontitle {
+    margin: 1em;
+    border-bottom: $color 1px dotted;
+}
+
+article {
+    margin: {
+        top: 1em;
+        left: 3em;
+        right: 3em;
+        bottom: 1em;
+    }
+    h3 {
+        font-size: 1em;
+        margin: {
+            bottom: .25em;
+        }
+
+        &.important {
+            color: $pink;
+            font-size: 1.25em;
+        }
+    }
+    p {
+        margin: {
+            left: 1.5em;
+            top: .25em;
+            bottom: .25em;
+            right: 1.5em;
+        }
+    }
+    ul {
+        padding: {
+            left: 3em;
+            top: .25em;
+            bottom: .25em;
+        }
+        li {
+            padding: {
+                top: .25em;
+            }
+        }
+    }
+}
+
+.info {
+}
+
+.hist {
+    .histlist {
+        margin: {
+            left: 3em;
+            right: 3em;
+        }
+        .histdate {
+            font-weight: bold;
+            margin: {
+                top: .5em;
+            }
+            padding: {
+                left: .5em;
+                bottom: .25em;
+            }
+            border-left: $digiporo solid .5em;
+        }
+        .histitem {
+            margin: {
+                bottom: .5em;
+            }
+            padding: {
+                left: 2em;
+                bottom: .25em;
+            }
+            border: {
+                bottom: $digiporo solid 2px;
+                left: $digiporo solid .5em;
+                bottom-left-radius: 2em 2em;
+            }
+        }
+    }
+}
+
+.main {
+}
+
+footer {
+    padding: {
+        top: .5em;
+        bottom: .5em;
+        left: 1em;
+        right: 1em;
+    }
+    margin: {
+        top: 2em;
+    }
+    display: flex;
+    justify-content: end;
+    border-top: darkgray dashed 1px;
+    .committee {
+        color: mix($color, $basebg, 50%);
+    }
+}
