@@ -226,7 +226,7 @@ a {
     box-shadow: 0 0px 15px -5px black;
 }
 
-.body {
+main {
     margin-top: $titleheight+2em;
 }
 
@@ -256,7 +256,6 @@ article {
     p {
         margin: {
             left: 1.5em;
-            top: .25em;
             bottom: .25em;
             right: 1.5em;
         }
