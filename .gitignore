@@ -3,3 +3,4 @@ node_modules/
 package.json
 install.sh
 gulpfile.js
+update.sh
